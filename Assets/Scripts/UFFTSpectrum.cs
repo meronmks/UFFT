@@ -39,23 +39,27 @@ public class UFFTSpectrum : MonoBehaviour
     [SerializeField] private TMP_Text maxXText = default;
 
     [Header("表示更新に関するもの")] 
+    [SerializeField] private Toggle RunToggle = default;
     public bool isRun = true;
     public bool isOneShot = false;
 
     public void SetFrequencyLimitLow(string num)
     {
+        if (num.Length == 0) return;
         frequencyLimitLow = float.Parse(num);
         UpdateFrequencyLine();
     }
     
     public void SetFrequencyLimitHigh(string num)
     {
+        if (num.Length == 0) return;
         frequencyLimitHigh = float.Parse(num);
         UpdateFrequencyLine();
     }
 
     public void Setg_Gain(string num)
     {
+        if (num.Length == 0) return;
         g_Gain = float.Parse(num);
     }
 
