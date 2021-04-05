@@ -16,7 +16,7 @@ public class UFFTSpectrum : MonoBehaviour
     public float frequencyLimitLow = 0;
     public float frequencyLimitHigh = 22050;
     [Tooltip("窓関数、まあ適当に")]
-    public FFTWindow windowUsed = FFTWindow.BlackmanHarris;
+    public FFTWindow windowUsed = FFTWindow.Rectangular;
     private float[] spectrum;
 
     [Header("グラフの描画")]
@@ -67,6 +67,35 @@ public class UFFTSpectrum : MonoBehaviour
     public void SetisOneShot()
     {
         isOneShot = true;
+        RunToggle.isOn = false;
+    }
+
+    public void SetFFTWindow(int select)
+    {
+        switch (select)
+        {
+            case 0:
+                windowUsed = FFTWindow.Rectangular;
+                break;
+            case 1:
+                windowUsed = FFTWindow.Triangle;
+                break;
+            case 2:
+                windowUsed = FFTWindow.Hamming;
+                break;
+            case 3:
+                windowUsed = FFTWindow.Hanning;
+                break;
+            case 4:
+                windowUsed = FFTWindow.Blackman;
+                break;
+            case 5:
+                windowUsed = FFTWindow.BlackmanHarris;
+                break;
+            default:
+                Debug.LogError("Unknown Window");
+                break;
+        }
     }
 
     private void UpdateFrequencyLine()
