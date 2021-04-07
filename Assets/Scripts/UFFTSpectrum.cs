@@ -110,7 +110,7 @@ public class UFFTSpectrum : MonoBehaviour
         X3Text.text = $"{Math.Round(freqNum*2) + frequencyLimitLow}";
         X4Text.text = $"{Math.Round(freqNum*3) + frequencyLimitLow}";
         X5Text.text = $"{Math.Round(freqNum*4) + frequencyLimitLow}";
-        maxXText.text = $"{frequencyLimitHigh}";
+        maxXText.text = $"{frequencyLimitHigh}Hz";
     }
     // Start is called before the first frame update
     void Start()
