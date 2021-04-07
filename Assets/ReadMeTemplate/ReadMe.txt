@@ -2,6 +2,25 @@
 
 ■これ何
 マイクの入力をリアルタイムフーリエ変換をして表示するだけ
+波形をpngとして出力する機能も付きました（実行ファイルのある場所にフォルダimgが生成されます）
+
+■使い方（拡張子（.exeとか）は環境によっては見えないので注意）
+＜デスクトップモードでの起動＞
+『UFFT.exe』をダブルクリックして起動
+
+＜SteamVRのオーバーレイアプリとして起動＞
+『UFFT_VROverlayMode.bat』をダブルクリックして起動
+※おまけ機能かつVR空間上にオーバレイ表示する為若干負荷が高くなります
+　またSteamVRで動作する環境のみとなります
+
+＜起動後の基本操作＞
+・入力デバイス選択
+　ドロップダウンメニューから現在ソフトで認識できている入力デバイス一覧が表示されています
+　起動後にデバイスを変更した場合は左回りの矢印のボタンを押すと一覧が更新されます
+
+・表示周波数範囲
+　グラフで表示する範囲を整数で指定できます
+　0～22050Hzの範囲で指定できます
 
 ■使ってるもの（間接的な利用も含む）のライセンスとか
 ・SimpleSpectrum
@@ -15,3 +34,37 @@ http://www.fontna.com/blog/736/
 * M+ (LICENSE_J,LICENSE_E)
 Copyright(c) 2012 M+ FONTS PROJECT
 ひらがな・カタカナ部分のデザイン Copyright(c)fontna.com
+
+・EasyOpenVROverlayForUnity.cs
+https://sabowl.sakura.ne.jp/gpsnmeajp/unity/EasyOpenVROverlayForUnity/
+
+・EasyOpenVRUtil
+https://github.com/gpsnmeajp/EasyOpenVRUtil
+
+・UniTask
+https://github.com/Cysharp/UniTask
+
+The MIT License (MIT)
+
+Copyright (c) 2019 Yoshifumi Kawai / Cysharp, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+■このソフトのソース
+https://github.com/meronmks/UFFT
