@@ -2,12 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class CamScreenShot : MonoBehaviour
 {
     [SerializeField] private Camera _camera = default;
     public void CaptureScreenShot()
+    {
+        Capture().Forget();
+    }
+    
+    private async UniTaskVoid Capture()
     {
         if(!Directory.Exists("img"))
         {
@@ -32,7 +38,9 @@ public class CamScreenShot : MonoBehaviour
             
         var bytes = screenShot.EncodeToPNG();
         Destroy(screenShot);
-            
-        File.WriteAllBytes(filePath, bytes);
+        using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+        {
+            await fs.WriteAsync(bytes, 0, bytes.Length);
+        }
     }
 }
