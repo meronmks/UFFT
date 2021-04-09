@@ -102,3 +102,8 @@ SOFTWARE.
 
 ■このソフトのソース
 https://github.com/meronmks/UFFT
+
+■スペシャルサンクス
+・声質研究会のみなさん（デバッグしてくれた）
+・なひたふ様（大元ネタソフトであるnfft07の作者）
+　http://www.nahitech.com/nahitafu/nfft.html
