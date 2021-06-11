@@ -82,3 +82,10 @@ Assets/SteamVR_Input
 Assets/StreamingAssets
 Assets/SteamVR_Input.meta
 Assets/StreamingAssets.meta
+Assets/BuildReports
+Assets/BuildReports.meta
+Assets/Scripts/ZString
+Assets/Scripts/ZString.meta
+Assets/Scripts/ZLogger
+Assets/Scripts/ZLogger.meta
+applog.log
