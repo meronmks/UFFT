@@ -13,6 +13,17 @@
 ※おまけ機能かつVR空間上にオーバレイ表示する為若干負荷が高くなります
 　またSteamVRで動作する環境のみとなります
 
+＜SteamVRのオーバーレイアプリとして自動起動登録する（β機能）＞
+『UFFT_VROverlayMode_AutoRunInstall.bat』をダブルクリックして起動
+UFFTが起動しますがすぐに終了します
+以後SteamVR起動と同時に立ち上がってくると思います。
+なおUFFTがCドライブかつ、実行ファイルのあるパスまでにマルチバイト文字（平たく言えば日本語）が
+存在する場合正常に動かない場合があります。
+
+＜SteamVRのオーバーレイアプリとして自動起動登録を解除する（β機能）＞
+『UFFT_VROverlayMode_AutoRunUninstall.bat』をダブルクリックして起動
+UFFTが起動しますがすぐに終了します
+
 ＜起動後の基本操作＞
 ・入力デバイス選択
 　ドロップダウンメニューから現在ソフトで認識できている入力デバイス一覧が表示されています
@@ -55,6 +66,7 @@
 　表示されたウインドウをコントローラーのいずれかのボタン（Indexの握りこみ可）を押しつつ
 　手を近づけるとブルッと震えると掴めます
 　ボタンの押し込みをやめるとその場に固定されます
+　ウインドウ位置のリセット機能なんて無いのでどっかいった場合は再起動してください
 
 ■使ってるもの（間接的な利用も含む）のライセンスとか
 ・SimpleSpectrum
@@ -81,6 +93,56 @@ https://github.com/Cysharp/UniTask
 The MIT License (MIT)
 
 Copyright (c) 2019 Yoshifumi Kawai / Cysharp, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+・ZString
+https://github.com/Cysharp/ZString/
+
+MIT License
+
+Copyright (c) 2020 Cysharp, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+・ZLogger
+https://github.com/Cysharp/ZLogger
+
+MIT License
+
+Copyright (c) 2020 Cysharp, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
