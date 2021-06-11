@@ -1,6 +1,10 @@
 # Unity製FFTソフト UFFT
 Unityで高速フーリエ変換した結果を表示してくれるソフト
 
+動作するものは下記boothにて配布中
+
+https://meronmks.booth.pm/items/2864378
+
 ## Unityのバージョン
 Unity 2018.4.20.f1
 
@@ -13,8 +17,13 @@ Unity 2018.4.20.f1
 - TextMesh Pro
 - [EasyOpenVROverlayForUnity.cs](https://sabowl.sakura.ne.jp/gpsnmeajp/unity/EasyOpenVROverlayForUnity/)
 - [EasyOpenVRUtil](https://github.com/gpsnmeajp/EasyOpenVRUtil)
+
+## 予めインポートしないとエラーになるもの
 - [UniTask](https://github.com/Cysharp/UniTask)
+- [ZLogger](https://github.com/Cysharp/ZLogger)
+- [ZString](https://github.com/Cysharp/ZString)
 
 ## License
 WTFPL
 ※公開している範囲であればお好きにどうぞ
+なおライブラリについては各ライセンスに準拠します
