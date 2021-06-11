@@ -60,4 +60,21 @@ public class SetMicDev2AudioSource : MonoBehaviour
         _dropdown.value = _defaultDeviceIndex;
         Debug.Log("デバイスの一覧更新完了");
     }
+    
+#if UNITY_IOS || UNITY_ANDROID
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            if (Microphone.IsRecording(deviceName))
+            {
+                Microphone.End(deviceName);
+            }
+        }
+        else
+        {
+            iniMicDeviceCap(_dropdown.options[_dropdown.value].text);
+        }
+    }
+#endif
 }
