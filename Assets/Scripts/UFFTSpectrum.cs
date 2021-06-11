@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ZLogger;
 
 public class UFFTSpectrum : MonoBehaviour
 {
@@ -43,6 +45,8 @@ public class UFFTSpectrum : MonoBehaviour
     public bool isRun = true;
     public bool isOneShot = false;
 
+    static readonly ILogger<UFFTSpectrum> logger = LogManager.GetLogger<UFFTSpectrum>();
+    
     public void SetFrequencyLimitLow(string num)
     {
         if (num.Length == 0) return;
@@ -97,7 +101,7 @@ public class UFFTSpectrum : MonoBehaviour
                 windowUsed = FFTWindow.BlackmanHarris;
                 break;
             default:
-                Debug.LogError("Unknown Window");
+                logger.ZLogDebug("Unknown Window");
                 break;
         }
     }

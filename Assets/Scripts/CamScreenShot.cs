@@ -15,12 +15,21 @@ public class CamScreenShot : MonoBehaviour
     
     private async UniTaskVoid Capture()
     {
+        #if UNITY_STANDALONE
         if(!Directory.Exists("img"))
         {
             Directory.CreateDirectory("img");
         }
         DateTime now = DateTime.Now;
         string filePath = $@"img/{now.ToString("yyyy-MM-dd_HH-mm-ss")}.png";
+        #elif UNITY_IOS || UNITY_ANDROID
+        if(!Directory.Exists($@"{Application.persistentDataPath}/img"))
+        {
+            Directory.CreateDirectory($@"{Application.persistentDataPath}/img");
+        }
+        DateTime now = DateTime.Now;
+        string filePath = $@"{Application.persistentDataPath}/img/{now.ToString("yyyy-MM-dd_HH-mm-ss")}.png";
+        #endif
         var rt = new RenderTexture(_camera.pixelWidth, _camera.pixelHeight, 24);
         var prev = _camera.targetTexture;
         _camera.targetTexture = rt;

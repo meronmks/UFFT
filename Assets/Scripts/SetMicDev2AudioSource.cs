@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 using TMPro;
 using UnityEngine;
+using ZLogger;
 
 public class SetMicDev2AudioSource : MonoBehaviour
 {
@@ -9,8 +11,16 @@ public class SetMicDev2AudioSource : MonoBehaviour
     private AudioSource _aud;
     private readonly int SampleNum = 4096;
     private int _defaultDeviceIndex = 0;
+    static readonly ILogger<SetMicDev2AudioSource> logger = LogManager.GetLogger<SetMicDev2AudioSource>();
+    
     // Start is called before the first frame update
     void Start()
+    {
+        iniMicDeviceCap(null);
+        iniDeviceList();
+    }
+
+    public void DeviceReStart()
     {
         iniMicDeviceCap(null);
         iniDeviceList();
@@ -33,17 +43,23 @@ public class SetMicDev2AudioSource : MonoBehaviour
             }
             int minFreq, maxFreq;
             Microphone.GetDeviceCaps(deviceName, out minFreq, out maxFreq); // 最大最小サンプリング数を得る
+            //minFreqおよびmaxFreqが0（任意に設定可能かを調べる）
+            if (minFreq == 0 && maxFreq == 0)
+            {
+                //適当に設定
+                minFreq = 44100;
+            }
             int ms = minFreq / SampleNum; // サンプリング時間を適切に取る
             _aud.clip = Microphone.Start(deviceName, true, ms, minFreq);
             while (!(Microphone.GetPosition(deviceName) > 0)) { } // きちんと値をとるために待つ
             Microphone.GetPosition(null);
             _aud.Play(); //マイクをオーディオソースとして実行(Play)開始
-            Debug.Log("マイクの初期化完了");
+            logger.ZLogInformation("マイクの初期化完了");
         }
     }
     
     //入力デバイスの一覧の初期化
-    public void iniDeviceList()
+    private void iniDeviceList()
     {
         _dropdown.ClearOptions();
         int i = 0;
@@ -58,7 +74,7 @@ public class SetMicDev2AudioSource : MonoBehaviour
         }
         _dropdown.RefreshShownValue();
         _dropdown.value = _defaultDeviceIndex;
-        Debug.Log("デバイスの一覧更新完了");
+        logger.ZLogInformation("デバイスの一覧更新完了");
     }
     
 #if UNITY_IOS || UNITY_ANDROID
