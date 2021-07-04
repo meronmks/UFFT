@@ -82,9 +82,9 @@ public class SetMicDev2AudioSource : MonoBehaviour
     {
         if (pauseStatus)
         {
-            if (Microphone.IsRecording(deviceName))
+            if (Microphone.IsRecording(_dropdown.options[_dropdown.value].text))
             {
-                Microphone.End(deviceName);
+                Microphone.End(_dropdown.options[_dropdown.value].text);
             }
         }
         else
