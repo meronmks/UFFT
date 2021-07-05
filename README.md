@@ -6,7 +6,7 @@ Unityで高速フーリエ変換した結果を表示してくれるソフト
 https://meronmks.booth.pm/items/2864378
 
 ## Unityのバージョン
-Unity 2018.4.20.f1
+Unity 2020.3.13f1
 
 ## リポジトリに含んでないが使用してる or 作るときに参考にしたアセット
 存在しないと一部は動かないかも（たぶん大体見た目が死ぬだけ）
@@ -20,8 +20,6 @@ Unity 2018.4.20.f1
 
 ## 予めインポートしないとエラーになるもの
 - [UniTask](https://github.com/Cysharp/UniTask)
-- [ZLogger](https://github.com/Cysharp/ZLogger)
-- [ZString](https://github.com/Cysharp/ZString)
 
 ## License
 WTFPL
