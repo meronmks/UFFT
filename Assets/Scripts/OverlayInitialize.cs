@@ -11,7 +11,6 @@ using Valve.VR;
 public class OverlayInitialize : MonoBehaviour
 {
     [SerializeField] private GameObject _OverlaySystem = default;
-    static readonly ILogger<OverlayInitialize> logger = LogManager.GetLogger<OverlayInitialize>();
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +21,11 @@ public class OverlayInitialize : MonoBehaviour
             {
 #if UNITY_STANDALONE_WIN
                 _OverlaySystem.SetActive(true);
-                logger.ZLogInformation("VROverlayモードで起動します");
                 return;
 #endif
             }else if (args[1].Equals("/iniAutoRun"))
             {
 #if UNITY_STANDALONE_WIN
-                logger.ZLogInformation("VRUtilityモードで起動します");
                 var openVRError = EVRInitError.None;
                 var overlayError = EVROverlayError.None;
                 CVRSystem openvr = null;
@@ -38,7 +35,6 @@ public class OverlayInitialize : MonoBehaviour
                 {
                     return;
                 }
-                logger.ZLogDebug("manifestPath:{0}\\manifest.vrmanifest",Directory.GetCurrentDirectory());
                 OpenVR.Applications.RemoveApplicationManifest($"{Directory.GetCurrentDirectory()}\\manifest.vrmanifest");
                 var vrAppErr = OpenVR.Applications.AddApplicationManifest($"{Directory.GetCurrentDirectory()}\\manifest.vrmanifest",false);
                 if (vrAppErr == EVRApplicationError.None)
@@ -46,7 +42,6 @@ public class OverlayInitialize : MonoBehaviour
                     vrAppErr = OpenVR.Applications.SetApplicationAutoLaunch("meronmks.UFFT", true);
                     if (vrAppErr != EVRApplicationError.None)
                     {
-                        logger.ZLogError("vrAppErr:{0}",vrAppErr);
                     }
                     OpenVR.Shutdown();
                     Application.Quit();
@@ -54,16 +49,13 @@ public class OverlayInitialize : MonoBehaviour
                 }
                 else
                 {
-                    logger.ZLogError("vrAppErr:{0}",vrAppErr);
                 }
                 OpenVR.Shutdown();
-                logger.ZLogInformation("自動起動の登録完了");
                 return;
 #endif
             }else if (args[1].Equals("/removeAutoRun"))
             {
 #if UNITY_STANDALONE_WIN
-                logger.ZLogInformation("VRUtilityモードで起動します");
                 var openVRError = EVRInitError.None;
                 var overlayError = EVROverlayError.None;
                 CVRSystem openvr = null;
@@ -73,14 +65,11 @@ public class OverlayInitialize : MonoBehaviour
                 {
                     return;
                 }
-                logger.ZLogDebug("manifestPath:{0}\\manifest.vrmanifest",Directory.GetCurrentDirectory());
                 OpenVR.Applications.RemoveApplicationManifest($"{Directory.GetCurrentDirectory()}\\manifest.vrmanifest");
                 OpenVR.Shutdown();
-                logger.ZLogInformation("自動起動の登録解除完了");
                 return;
 #endif
             }
         }
-        logger.ZLogInformation("Desktopモードで起動します");
     }
 }

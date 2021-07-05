@@ -45,7 +45,6 @@ public class UFFTSpectrum : MonoBehaviour
     public bool isRun = true;
     public bool isOneShot = false;
 
-    static readonly ILogger<UFFTSpectrum> logger = LogManager.GetLogger<UFFTSpectrum>();
     
     public void SetFrequencyLimitLow(string num)
     {
@@ -101,7 +100,6 @@ public class UFFTSpectrum : MonoBehaviour
                 windowUsed = FFTWindow.BlackmanHarris;
                 break;
             default:
-                logger.ZLogDebug("Unknown Window");
                 break;
         }
     }

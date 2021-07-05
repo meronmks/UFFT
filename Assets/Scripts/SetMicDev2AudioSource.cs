@@ -11,7 +11,6 @@ public class SetMicDev2AudioSource : MonoBehaviour
     private AudioSource _aud;
     private readonly int SampleNum = 4096;
     private int _defaultDeviceIndex = 0;
-    static readonly ILogger<SetMicDev2AudioSource> logger = LogManager.GetLogger<SetMicDev2AudioSource>();
     
     // Start is called before the first frame update
     void Start()
@@ -54,7 +53,6 @@ public class SetMicDev2AudioSource : MonoBehaviour
             while (!(Microphone.GetPosition(deviceName) > 0)) { } // きちんと値をとるために待つ
             Microphone.GetPosition(null);
             _aud.Play(); //マイクをオーディオソースとして実行(Play)開始
-            logger.ZLogInformation("マイクの初期化完了");
         }
     }
     
@@ -74,12 +72,12 @@ public class SetMicDev2AudioSource : MonoBehaviour
         }
         _dropdown.RefreshShownValue();
         _dropdown.value = _defaultDeviceIndex;
-        logger.ZLogInformation("デバイスの一覧更新完了");
     }
     
-#if UNITY_IOS || UNITY_ANDROID
+
     private void OnApplicationPause(bool pauseStatus)
     {
+#if UNITY_IOS || UNITY_ANDROID
         if (pauseStatus)
         {
             if (Microphone.IsRecording(_dropdown.options[_dropdown.value].text))
@@ -91,6 +89,7 @@ public class SetMicDev2AudioSource : MonoBehaviour
         {
             iniMicDeviceCap(_dropdown.options[_dropdown.value].text);
         }
-    }
 #endif
+    }
+
 }
