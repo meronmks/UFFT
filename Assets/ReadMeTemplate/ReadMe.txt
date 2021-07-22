@@ -61,6 +61,18 @@ UFFTが起動しますがすぐに終了します
 　もうそのままです
 　実行ファイルのある場所にフォルダimgが生成され、その中に記録されます
 
+・ファイルを読み込む
+　外部の音声ファイルを読み込みます。
+　Unity側の仕様上もあり"mp3","wav","ogg"のみを受け付けます。
+
+・再生とか停止とかしそうなボタン
+　そのままです、読み込んだファイルを再生しつつ波形解析します。
+　停止時に自動でマイク入力に再度切り替わります。
+
+・再生とか停止とかしそうなボタンの右横にあるバー
+　ファイル読み込み時の再生音量です。
+　現状解析時の波形の大きさにも影響するので可能な限り大き目をお勧め（対応予定）
+
 ＜SteamVRのオーバーレイアプリ時のみの操作＞
 ・ウインドウを移動させる
 　表示されたウインドウをコントローラーのいずれかのボタン（Indexの握りこみ可）を押しつつ
@@ -137,12 +149,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-・ZLogger
-https://github.com/Cysharp/ZLogger
+・UnityStandaloneFileBrowser
+https://github.com/gkngkc/UnityStandaloneFileBrowser
 
 MIT License
 
-Copyright (c) 2020 Cysharp, Inc.
+Copyright (c) 2017 Gökhan Gökçe
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
