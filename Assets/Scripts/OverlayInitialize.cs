@@ -27,7 +27,6 @@ public class OverlayInitialize : MonoBehaviour
             {
 #if UNITY_STANDALONE_WIN
                 var openVRError = EVRInitError.None;
-                var overlayError = EVROverlayError.None;
                 CVRSystem openvr = null;
                 //OpenVRの初期化
                 openvr = OpenVR.Init(ref openVRError, EVRApplicationType.VRApplication_Utility);
@@ -57,7 +56,6 @@ public class OverlayInitialize : MonoBehaviour
             {
 #if UNITY_STANDALONE_WIN
                 var openVRError = EVRInitError.None;
-                var overlayError = EVROverlayError.None;
                 CVRSystem openvr = null;
                 //OpenVRの初期化
                 openvr = OpenVR.Init(ref openVRError, EVRApplicationType.VRApplication_Utility);

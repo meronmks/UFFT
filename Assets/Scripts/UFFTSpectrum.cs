@@ -5,12 +5,11 @@ using Microsoft.Extensions.Logging;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using ZLogger;
 
 public class UFFTSpectrum : MonoBehaviour
 {
     [Header("FFTに関するもの")]
-    [SerializeField] private AudioSource _audio = default;
+    public AudioSource _audio = default;
     public float g_Gain = 1.0f;
     public int numSamples = 4096;
     public int sampleChannel = 0;
