@@ -20,6 +20,7 @@ Unity 2020.3.13f1
 
 ## 予めインポートしないとエラーになるもの
 - [UniTask](https://github.com/Cysharp/UniTask)
+- [UnityStandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
 
 ## License
 WTFPL
