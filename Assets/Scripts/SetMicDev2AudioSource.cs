@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using AudioStream;
 using Microsoft.Extensions.Logging;
 using TMPro;
 using UnityEngine;
@@ -11,22 +12,61 @@ public class SetMicDev2AudioSource : MonoBehaviour
     private readonly int SampleNum = 4096;
     private int _defaultDeviceIndex = 0;
     
+    public AudioStreamInput audioStreamInput;
+    private List<FMODSystemsManager.INPUT_DEVICE> availableInputs = new List<FMODSystemsManager.INPUT_DEVICE>();
+    private int selectedInput;
+    private int previousSelectedInput;
+    
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-        iniMicDeviceCap(null);
+        while (!this.audioStreamInput.ready)
+        {
+            yield return null;
+        }
+        
+        // iniMicDeviceCap(null);
         iniDeviceList();
     }
 
     public void DeviceReStart()
     {
-        iniMicDeviceCap(null);
-        iniDeviceList();
+        // iniMicDeviceCap(null);
+        // iniDeviceList();
     }
 
     public void ChangeDeviceCaps()
     {
-        iniMicDeviceCap(_dropdown.options[_dropdown.value].text);
+        this.selectedInput = _dropdown.value;
+        if (this.selectedInput != this.previousSelectedInput)
+        {
+            if (Application.isPlaying)
+            {
+                this.audioStreamInput.Stop();
+                this.audioStreamInput.recordDeviceId = this.availableInputs[this.selectedInput].id;
+                this.audioStreamInput.Record();
+            }
+
+            this.previousSelectedInput = this.selectedInput;
+        }
+        // iniMicDeviceCap(_dropdown.options[_dropdown.value].text);
+    }
+    
+    public void OnError(string goName, string msg)
+    {
+        Debug.LogError(msg);
+    }
+
+    public void OnError_InputNotification(string goName, string msg)
+    {
+        Debug.LogError(msg);
+    }
+    
+    public void OnRecordDevicesChanged(string goName)
+    {
+        // update device list
+        if (this.audioStreamInput.ready)
+            this.availableInputs = FMODSystemsManager.AvailableInputs(this.audioStreamInput.logLevel, this.audioStreamInput.gameObject.name, this.audioStreamInput.OnError, true);
     }
 
     //入力デバイスの初期化
@@ -59,18 +99,22 @@ public class SetMicDev2AudioSource : MonoBehaviour
     private void iniDeviceList()
     {
         _dropdown.ClearOptions();
+        this.availableInputs = FMODSystemsManager.AvailableInputs(this.audioStreamInput.logLevel, this.audioStreamInput.gameObject.name, this.audioStreamInput.OnError, true);
         int i = 0;
-        foreach(var device in Microphone.devices)
+        foreach(var device in availableInputs)
         {
-            if (Microphone.IsRecording(device))
-            {
-                _defaultDeviceIndex = i;
-            }
-            _dropdown.options.Add(new TMP_Dropdown.OptionData { text = device });
+            // fmodのおかげで0番目が既定の入力デバイス？
+            // if (Microphone.IsRecording(device))
+            // {
+            //     _defaultDeviceIndex = i;
+            // }
+            _dropdown.options.Add(new TMP_Dropdown.OptionData { text = this.availableInputs[i].name });
             i++;
         }
         _dropdown.RefreshShownValue();
         _dropdown.value = _defaultDeviceIndex;
+        this.selectedInput = 0;
+        this.audioStreamInput.Record();
     }
     
 
@@ -89,6 +133,12 @@ public class SetMicDev2AudioSource : MonoBehaviour
             iniMicDeviceCap(_dropdown.options[_dropdown.value].text);
         }
 #endif
+    }
+    
+    void OnAudioFilterRead(float[] data, int channels)
+    {
+        //常にAudio出力としてはミュート状態にする
+        System.Array.Clear(data, 0, data.Length);
     }
 
 }

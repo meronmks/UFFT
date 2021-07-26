@@ -8907,6 +8907,7 @@ GameObject:
   - component: {fileID: 1488516934}
   - component: {fileID: 1488516933}
   - component: {fileID: 1488516935}
+  - component: {fileID: 1488516936}
   m_Layer: 0
   m_Name: MicAudioMaster
   m_TagString: Untagged
@@ -8926,10 +8927,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 243886731581315684, guid: cd337f9453091ab4e83610eac410414c,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -9038,6 +9039,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dropdown: {fileID: 622527723}
+  audioStreamInput: {fileID: 1488516936}
+--- !u!114 &1488516936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488516932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1771c9e0161bf4eaf1337949b4f610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recChannels: 0
+  recordDeviceId: 0
+  logLevel: 0
+  recordOnStart: 0
+  gain: 1
+  latencyBlock: 0
+  latencyTotal: 0
+  latencyAverage: 0
+  OnRecordingStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRecordingPaused:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRecordingStopped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnError:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1488516935}
+        m_TargetAssemblyTypeName: SetMicDev2AudioSource, Assembly-CSharp
+        m_MethodName: OnError
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  useAutomaticDSPBufferSize: 1
+  dspBufferLength_Custom: 64
+  dspBufferCount_Custom: 2
+  resampleInput: 1
+  useUnityToResampleAndMapChannels: 1
+  ready: 0
+  fmodVersion: 
+  isRecording: 0
+  isPaused: 0
 --- !u!1 &1488584000
 GameObject:
   m_ObjectHideFlags: 0
@@ -13016,6 +13071,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965302340}
   m_CullTransparentMesh: 0
+--- !u!1 &1969625756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1969625758}
+  - component: {fileID: 1969625757}
+  m_Layer: 0
+  m_Name: AudioStreamDevicesChangedNotify (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1969625757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969625756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae65302ea473434daa10e75211344a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logLevel: 0
+  OnError:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1488516935}
+        m_TargetAssemblyTypeName: SetMicDev2AudioSource, Assembly-CSharp
+        m_MethodName: OnError
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDevicesChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1488516935}
+        m_TargetAssemblyTypeName: SetMicDev2AudioSource, Assembly-CSharp
+        m_MethodName: OnRecordDevicesChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  outputDevicesChanged: 0
+--- !u!4 &1969625758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969625756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1979798115
 GameObject:
   m_ObjectHideFlags: 0
