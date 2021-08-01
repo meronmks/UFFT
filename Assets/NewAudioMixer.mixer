@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-5326497077720833337
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ExtAudio
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 91b1a913f7572054eb85588be6df42b4
+  m_Children: []
+  m_Volume: 687bc7fb40f7518489dd4af01643b398
+  m_Pitch: 09d9198a4abb7224897b6ca369e6d1eb
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -3655046903612438096}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-3655046903612438096
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: ed071c6de0e31ea4f8fad826d9a0b4ac
+  m_EffectName: Attenuation
+  m_MixLevel: 9ec07e5c362cb9a4fb52502ddb8a9b1e
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -15,11 +48,14 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 687bc7fb40f7518489dd4af01643b398
+    name: MyExposedParam
   m_AudioMixerGroupViews:
   - guids:
     - d52977d51e1a4824684b6327f621ba57
     - c914f7c24db58904aac173fdf1f06153
+    - 91b1a913f7572054eb85588be6df42b4
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -34,8 +70,10 @@ AudioMixerGroupController:
   m_GroupID: d52977d51e1a4824684b6327f621ba57
   m_Children:
   - {fileID: 243886731581315684}
+  - {fileID: -5326497077720833337}
   m_Volume: 46f29c5a69f86b449928946ded32a2f5
   m_Pitch: c309064398d42d6498abca207e9ffd18
+  m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
   m_UserColorIndex: 0
@@ -67,7 +105,8 @@ AudioMixerSnapshotController:
   m_SnapshotID: 9414ebb671e219b4c85ffd16bae59abb
   m_FloatValues:
     aa591918d4696e44ab600763662807ff: -80
-    46f29c5a69f86b449928946ded32a2f5: -32.77572
+    46f29c5a69f86b449928946ded32a2f5: 0
+    687bc7fb40f7518489dd4af01643b398: -20
   m_TransitionOverrides: {}
 --- !u!243 &243886731581315684
 AudioMixerGroupController:
@@ -81,6 +120,7 @@ AudioMixerGroupController:
   m_Children: []
   m_Volume: aa591918d4696e44ab600763662807ff
   m_Pitch: cdc62128113c74e4c8f2e9efdbf88994
+  m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 244786840908620662}
   m_UserColorIndex: 0

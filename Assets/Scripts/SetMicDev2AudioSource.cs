@@ -134,11 +134,5 @@ public class SetMicDev2AudioSource : MonoBehaviour
         }
 #endif
     }
-    
-    void OnAudioFilterRead(float[] data, int channels)
-    {
-        //常にAudio出力としてはミュート状態にする
-        System.Array.Clear(data, 0, data.Length);
-    }
 
 }
